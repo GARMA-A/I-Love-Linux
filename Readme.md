@@ -119,6 +119,97 @@ echo ${var4} # Sat Aug 31 18:05:27 EEST 2024
 echo $var1; ls
 ```
 ### declare global variables with data types
+```bash
+declare -i num=10 # i stand for integer
+declare str='Garma' # the default
+declare -a arr=(1 2 3 4) # -a for array
+echo ${arr[0]}  # Output: 1
+echo ${arr[@]}  # Output: 1 2 3 4 5
+declare -A assoc-arr=([key1]='value1' [key2]='value')
+echo ${assoc_arr[key1]}  # Output: value1
+echo ${!assoc_arr[@]}    # Output: key1 key2 (keys)
+echo ${assoc_arr[@]}     # Output: value1 value2 (values)
+```
+
+### save the output of a command in file
+```bash
+echo $(date) > newestDate # overwrite the file content with cur date
+echo $(date) >> allDates  # append and add to it  the cur date
+```
+
+
+## Filters (grep)
+### `grep declare Readme.md` print all lines on this file has 'declare' on it
+### `grep -n` print also the line numbers `-i` ignore case sensetive 
+### `-v` give me all lines without 'declare' `-c` give me count of 'declare' on the file/s
+
+## Filters (head & tail)
+### `head` show to you the first 10 lines on file `tail` show last 10 lines
+```bash
+head Readme.md
+tail -20 Readme.md # print last 20 lines
+```
+## wc
+```bash
+wc Readme.md # output: 155  550 3340 Readme.md 
+# there is 155 lines with 550 words with 3340 characters on this file
+```
+### you can use `-l` to print only the lines number or
+### `-w` for words number `-c` for characters number
+
+## sed (overwrite files)
+```bash
+sed '0,/world/s/world/girgis/' file1
+# change first occurrence of 'world' in the entire file with 'girgis'
+sed 's/world/girgis/' file1 
+# change first occurrence of 'world' on each line with 'girgis' 
+sed 's/world/girgis/g' file1 
+# change all occurrence of 'world' on each line with 'girgis' 
+```
+## awk (print specific things)
+```bash
+awk '{print $1}' file1 # print first row 
+awk '{print $1 $2}' file1 # print first,second row 
+awk '/ello world/{print $0}' file1 # print any line conatin 'ello world'
+```
+## pipes -> |  
+### Take output of cur command make it input to next command
+```bash
+head -50 Readme.md | grep insert
+# on first 50 lines of readme print all lines contain insert
+
+head -50 Readme.md | grep insert | wc -l
+# tell me how many lines has 'insert' on it on 
+# the first 50 lines of Readme.md file
+
+```
+## pipes with tr (transform or translate)
+```bash 
+echo "this iss a test 123 !" | tr -d 's' # -d delete
+# output : thi i a tet 123 !
+echo "this iss a test 123 !" | tr -s 's' # -s squeeze any sss -> s
+# output : this is a test 123 !
+echo "this iss a test 123 !" | tr [i] [I]
+#output :thIs Iss a test 123 !
+echo "this iss a test 123 !" | tr [a-z] [A-Z]
+#output :THIS ISS A TEST 123 !
+echo "this iss a test 123 !" | tr [:lower:] [:upper:]
+#output :THIS ISS A TEST 123 !
+echo "this iss a test 123 !" | tr -d [:digit:]
+#output: this iss a test ! 
+echo "this iss a test 123 !" | tr [:digit:] 'z'
+#output: this iss a test zzz ! 
+```
+
+## pipes with cut
+```bash
+echo "This is string of words" | cut -c 1,6-15 #first letter and from 6-15 inclusive
+# Tis string 
+echo "This is string of words" | cut -f 1 -d " " # -f field and -d delimiter
+# output:This
+echo "This:is:string:of:words" | cut -f 3,4 -d ":" # filed number 3&4  each field end with ':'
+#output : string:of
+
 ```
 
 
