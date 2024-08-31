@@ -1,10 +1,14 @@
 # Important Linux Commands I Love to Use ❤️
+
+<hr/>
+
 ## Navigate to Specific Location
 
 ### `cd /mnt/c/Users/userName/Desktop` - Move to Desktop
 ```bash
 cd /mnt/c/Users/userName/Desktop
 ```
+<hr/>
 
 ## Create & Delete Files
 
@@ -17,6 +21,7 @@ touch file1.txt
 ```bash
 rm file1.txt
 ```
+<hr/>
 
 ## Create & Delete Directory
 
@@ -29,6 +34,7 @@ mkdir dirName
 ```bash
 rm -r dirName
 ```
+<hr/>
 
 ## See Content of a File
 
@@ -36,6 +42,7 @@ rm -r dirName
 ```bash
 cat file1.txt
 ```
+<hr/>
 
 ## Copy File/Folder to Another Path
 
@@ -48,6 +55,7 @@ cp path anotherPath
 ```bash
 cp -r path anotherPath
 ```
+<hr/>
 
 ## Move (Cut) File/Folder to Another Path
 
@@ -60,6 +68,7 @@ mv path anotherPath
 ```bash
 mv oldFileName.txt newFileName.txt
 ```
+<hr/>
 
 ## Regex The {} and [] on Linux
 
@@ -87,6 +96,7 @@ ls file[!2]
 ```bash
 ls file[0-9][0-9]
 ```
+<hr/>
 
 ## Declare and Use Variables on Linux
 
@@ -137,11 +147,13 @@ echo $(date) > newestDate # overwrite the file content with cur date
 echo $(date) >> allDates  # append and add to it  the cur date
 ```
 
+<hr/>
 
 ## Filters (grep)
 ### `grep declare Readme.md` print all lines on this file has 'declare' on it
 ### `grep -n` print also the line numbers `-i` ignore case sensetive 
 ### `-v` give me all lines without 'declare' `-c` give me count of 'declare' on the file/s
+<hr/>
 
 ## Filters (head & tail)
 ### `head` show to you the first 10 lines on file `tail` show last 10 lines
@@ -149,7 +161,9 @@ echo $(date) >> allDates  # append and add to it  the cur date
 head Readme.md
 tail -20 Readme.md # print last 20 lines
 ```
-## wc
+<hr/>
+
+## wc (wordCount)
 ```bash
 wc Readme.md # output: 155  550 3340 Readme.md 
 # there is 155 lines with 550 words with 3340 characters on this file
@@ -157,7 +171,9 @@ wc Readme.md # output: 155  550 3340 Readme.md
 ### you can use `-l` to print only the lines number or
 ### `-w` for words number `-c` for characters number
 
-## sed (overwrite files)
+<hr/>
+
+## sed (stream editor) (overwrite files)
 ```bash
 sed '0,/world/s/world/girgis/' file1
 # change first occurrence of 'world' in the entire file with 'girgis'
@@ -166,12 +182,17 @@ sed 's/world/girgis/' file1
 sed 's/world/girgis/g' file1 
 # change all occurrence of 'world' on each line with 'girgis' 
 ```
+<hr/>
+
 ## awk (print specific things)
 ```bash
 awk '{print $1}' file1 # print first row 
 awk '{print $1 $2}' file1 # print first,second row 
 awk '/ello world/{print $0}' file1 # print any line conatin 'ello world'
 ```
+
+<hr/>
+
 ## pipes -> |  
 ### Take output of cur command make it input to next command
 ```bash
@@ -183,6 +204,8 @@ head -50 Readme.md | grep insert | wc -l
 # the first 50 lines of Readme.md file
 
 ```
+<hr/>
+
 ## pipes with tr (transform or translate)
 ```bash 
 echo "this iss a test 123 !" | tr -d 's' # -d delete
@@ -200,6 +223,7 @@ echo "this iss a test 123 !" | tr -d [:digit:]
 echo "this iss a test 123 !" | tr [:digit:] 'z'
 #output: this iss a test zzz ! 
 ```
+<hr/>
 
 ## pipes with cut
 ```bash
@@ -211,6 +235,39 @@ echo "This:is:string:of:words" | cut -f 3,4 -d ":" # filed number 3&4  each fiel
 #output : string:of
 
 ```
+
+<hr/>
+
+## stat (statistics)
+### give you all information about specific file like when it modify when access when it Create
+```bash
+stat file1
+```
+
+## find (find any file anywhere)
+```bash
+find . -type f -name R*.md
+# find on the current directory any file 
+# start with R and no matter what number of charachters are in 
+# it's name but it end with .md 
+find . -type f -name R??.md
+# the name must be 3 letters start with R
+
+```
+
+## compress files & folders
+
+```bash
+gzip file1 # convert it to file1.txt.gz
+gzip -d file1 # return to normal
+gzip -k file1 # make compress copy of it the original stay the same 
+
+```
+
+
+
+
+
 
 
 
