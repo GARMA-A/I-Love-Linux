@@ -1,6 +1,7 @@
 # Important Linux Commands I Love to Use ❤️
 
 <hr/>
+<hr/>
 
 ## Navigate to Specific Location
 
@@ -8,6 +9,7 @@
 ```bash
 cd /mnt/c/Users/userName/Desktop
 ```
+<hr/>
 <hr/>
 
 ## Create & Delete Files
@@ -22,6 +24,7 @@ touch file1.txt
 rm file1.txt
 ```
 <hr/>
+<hr/>
 
 ## Create & Delete Directory
 
@@ -35,6 +38,7 @@ mkdir dirName
 rm -r dirName
 ```
 <hr/>
+<hr/>
 
 ## See Content of a File
 
@@ -42,6 +46,7 @@ rm -r dirName
 ```bash
 cat file1.txt
 ```
+<hr/>
 <hr/>
 
 ## Copy File/Folder to Another Path
@@ -56,6 +61,7 @@ cp path anotherPath
 cp -r path anotherPath
 ```
 <hr/>
+<hr/>
 
 ## Move (Cut) File/Folder to Another Path
 
@@ -68,6 +74,7 @@ mv path anotherPath
 ```bash
 mv oldFileName.txt newFileName.txt
 ```
+<hr/>
 <hr/>
 
 ## Regex The {} and [] on Linux
@@ -96,6 +103,7 @@ ls file[!2]
 ```bash
 ls file[0-9][0-9]
 ```
+<hr/>
 <hr/>
 
 ## Declare and Use Variables on Linux
@@ -148,11 +156,13 @@ echo $(date) >> allDates  # append and add to it  the cur date
 ```
 
 <hr/>
+<hr/>
 
 ## Filters (grep)
 ### `grep declare Readme.md` print all lines on this file has 'declare' on it
 ### `grep -n` print also the line numbers `-i` ignore case sensetive 
 ### `-v` give me all lines without 'declare' `-c` give me count of 'declare' on the file/s
+<hr/>
 <hr/>
 
 ## Filters (head & tail)
@@ -161,6 +171,7 @@ echo $(date) >> allDates  # append and add to it  the cur date
 head Readme.md
 tail -20 Readme.md # print last 20 lines
 ```
+<hr/>
 <hr/>
 
 ## wc (wordCount)
@@ -172,25 +183,155 @@ wc Readme.md # output: 155  550 3340 Readme.md
 ### `-w` for words number `-c` for characters number
 
 <hr/>
+<hr/>
 
 ## sed (stream editor) (overwrite files)
+### so powerfull command used on so many things 
+### **`Replacment`**
 ```bash
 sed '0,/world/s/world/girgis/' file1
 # change first occurrence of 'world' in the entire file with 'girgis'
+
+sed '/pattern/{s/old/new/g}' filename.txt  
+# Replaces only in lines matching 'pattern'
+
+sed '0,/pattern/{s/pattern/replacement/; s/pattern/replacement/; s/pattern/replacement/}' filename.txt
+#  replace only the first three occurrences of a pattern in a file
+
+sed '2,4s/pattern/replacement/' filename.txt  
+# Only replace all accourences in lines 2 to 4 
+
+sed -i 's/old/new/g' filename.txt
+# Modify a file directly without the need to redirect output
+
 sed 's/world/girgis/' file1 
 # change first occurrence of 'world' on each line with 'girgis' 
+
 sed 's/world/girgis/g' file1 
 # change all occurrence of 'world' on each line with 'girgis' 
+
+sed 's/[0-9]/#/g' filename.txt  
+# Replaces all digits from 0 to 9 with '#'
 ```
+### **`Deleting`**
+```bash
+sed '3d' filename.txt  
+# Deletes the 3rd line
+
+sed '/pattern/d' filename.txt  
+# Deletes lines containing 'pattern'
+
+sed '2,4d' filename.txt  
+# Deletes lines 2 to 4
+
+```
+### **`Insert & Append`**
+
+```bash
+sed '3i\New line of text' filename.txt  
+# Inserts before line 3
+
+sed '/pattern/i\New line of text' filename.txt
+# Inserts before lines matching 'pattern'
+
+sed '3a\New line of text' filename.txt  
+# Appends after line 3
+
+sed '/pattern/a\New line of text' filename.txt 
+# Appends after lines matching 'pattern'
+
+```
+
+### **`Print`**
+
+```bash
+sed -n '3p' filename.txt 
+# Prints only the 3rd line
+
+sed -n '/pattern/p' filename.txt
+# Prints only lines matching 'pattern'
+
+sed -n '2,4p' filename.txt
+# Prints lines 2 to 4
+```
+
+<hr/>
 <hr/>
 
+
 ## awk (print specific things)
+### **`print`**
+
 ```bash
-awk '{print $1}' file1 # print first row 
-awk '{print $1 $2}' file1 # print first,second row 
-awk '/ello world/{print $0}' file1 # print any line conatin 'ello world'
+awk '{print $1 $2}' file1 
+# print first,second row 
+
+awk '/pattern/' filename.txt  
+# Prints lines containing 'pattern'
+
+awk '!/pattern/' filename.txt  
+# Prints lines not containing 'pattern'
+
+awk '/ello world/{print $0}' file1 
+# print any line conatin 'ello world'
+
+awk 'NR==3' filename.txt  
+# Prints the third line
+
+awk '{print $3 ", " $1}' filename.txt  
+# Prints third and first fields, separated by a comma
+
 ```
 
+### **`Calculations`**
+
+```bash
+awk '{sum = $2 + $3; print sum}' lines.txt
+# sum second column with third column on each line (if columns are numbers)
+
+awk '{sum += $2; count++} END {print sum/count}' filename.txt 
+# Averages the second column
+
+```
+
+### **`Filter`**
+
+```bash
+
+awk '$3 > 50' filename.txt 
+# Prints lines where the third field is greater than 50
+
+awk 'length($1) > 5' filename.txt  
+# Prints lines where the first field is longer than 5 characters
+
+```
+### **`Replace & String Operations`**
+
+```bash
+awk '{gsub(/old/, "new"); print}' filename.txt  
+# Replaces 'old' with 'new' globally in each line
+
+awk '{print substr($1, 1, 3)}' filename.txt 
+# Prints the first 3 characters of the first field
+
+awk '{print toupper($0)}' lines.txt  
+# Converts all text to uppercase
+
+```
+
+### **`Conditions & Loops`**
+
+```bash
+awk '{if ($3 > 50) print $0; else print "Less than 50"}' filename.txt  
+# Prints message based on condition
+
+awk '{for (i=1; i<=NF; i++) print $i}' filename.txt
+  # Prints each field in each line on a new line
+
+```
+
+
+<hr/>
 <hr/>
 
 ## pipes -> |  
@@ -204,6 +345,7 @@ head -50 Readme.md | grep insert | wc -l
 # the first 50 lines of Readme.md file
 
 ```
+<hr/>
 <hr/>
 
 ## pipes with tr (transform or translate)
@@ -224,6 +366,7 @@ echo "this iss a test 123 !" | tr [:digit:] 'z'
 #output: this iss a test zzz ! 
 ```
 <hr/>
+<hr/>
 
 ## pipes with cut
 ```bash
@@ -236,6 +379,7 @@ echo "This:is:string:of:words" | cut -f 3,4 -d ":" # filed number 3&4  each fiel
 
 ```
 
+<hr/>
 <hr/>
 
 ## stat (statistics)
@@ -263,7 +407,6 @@ gzip -d file1 # return to normal
 gzip -k file1 # make compress copy of it the original stay the same 
 
 ```
-
 
 
 
