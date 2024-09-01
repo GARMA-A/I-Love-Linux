@@ -388,6 +388,9 @@ echo "This:is:string:of:words" | cut -f 3,4 -d ":" # filed number 3&4  each fiel
 stat file1
 ```
 
+<hr/>
+<hr/>
+
 ## find (find any file anywhere)
 ```bash
 find . -type f -name R*.md
@@ -399,6 +402,9 @@ find . -type f -name R??.md
 
 ```
 
+<hr/>
+<hr/>
+
 ## compress files & folders
 
 ```bash
@@ -407,9 +413,40 @@ gzip -d file1 # return to normal
 gzip -k file1 # make compress copy of it the original stay the same 
 
 ```
+<hr/>
+<hr/>
 
+## Shell scripring
+```bash
+nano my_shell_file.sh
+# put into it #!/bin/bash echo "hello";echo "world"; echo "from shell"
+#make it excutable
+chmod +x my_shell_file.sh
+# excute it
+sh my_shell_file.sh
+#output  hello world from shell
 
+```
+### python code on the shell file
+```bash
+#!/usr/bin/python3
+print("Hello python from shell script")
+```
+<hr/>
+<hr/>
 
+## short circuits
+
+```bash
+false || echo "this mean the first command fail"
+# output: this mean the first command fail
+
+true && echo "this mean the first command succeed"
+# output: this mean the first command succeed
+
+echo "first line" && echo "second line"
+#output: first line second line
+```
 
 
 
