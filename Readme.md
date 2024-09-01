@@ -319,7 +319,7 @@ awk '{print toupper($0)}' lines.txt
 
 ```
 
-### **`Conditions & Loops`**
+### **`awk Conditions & Loops`**
 
 ```bash
 awk '{if ($3 > 50) print $0; else print "Less than 50"}' filename.txt  
@@ -448,6 +448,154 @@ echo "first line" && echo "second line"
 #output: first line second line
 ```
 
+<hr/>
+<hr/>
 
+## functions
+
+```bash 
+
+Hello () {
+    echo "Hello Functions!"
+}
+
+Hello
+
+
+function Hello () {
+    echo "Hello Functions!"
+    # timestmp
+    return 0
+}
+
+function timestmp (){
+    echo "The time now is $(date +%m/%d/%y" "%R)"
+}
+
+Hello
+
+echo $? 
+
+```
+
+
+<hr/>
+<hr/>
+
+## Read Input
+
+```bash
+echo "What is your name?"
+read name
+echo "Hello, $name!"
+# or printing some text before take the input
+read -p "What is your name? " name
+echo "Hello, $name!"
+# or do not display what i typing -s secret
+echo "What is your password?"
+read -sp "password: " password
+echo "Hello, $password!"
+```
+
+<hr/>
+<hr/>
+
+### **`loops`**
+
+```bash
+for integer in 1 2 3 4 5 6 7 8 9 10
+    do 
+        echo $integer
+    done
+# output : 1 2 3 4 5 6 7 8 9 10
+
+for word in some string statement
+    do
+        echo $word
+    done
+# output : some string statement
+
+for i in $(ls /etc/); 
+    do
+        echo $i 
+    done
+
+i=0
+while [ $i -le 10 ] 
+    do
+        echo $i
+        ((i++))
+    done
+
+```
+
+<hr/>
+<hr/>
+
+## Conditions
+
+```bash
+
+if [ 'garma' = 'garma' ]; then
+   echo expresion evaluate as true
+fi
+
+read -p "Enter a number: " i
+
+if (( i % 2 == 0 )); then
+    echo "$i is even"
+fi
+
+
+if ! [[ "$i" =~ ^[0-9]+$ ]]; then  # check if the input is an integer
+    echo "Error: Not an integer"
+    exit 1
+else
+    if (( i % 2 == 0 )); then # check if even or odd
+        echo "$i is even"
+    else 
+        echo "$i is odd"
+    fi
+fi
+```
+## Simple programms
+
+```bash
+read -p "Enter a number: " i
+
+# check if the input is an integer
+function is_int(){
+    if [[ "$i" =~ ^[0-9]+$ ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+if is_int ; then  # check if the input is an integer
+    if (( i % 2 == 0 )); then # check if even or odd
+        echo "$i is even"
+    else 
+        echo "$i is odd"
+    fi
+else
+    echo "Error: Not an integer"
+fi
+
+```
+
+<hr/>
+<hr/>
+
+## variables sympols
+
+```bash
+r = Girgis
+echo ${r} # Girgis
+echo ${#r} # 6   # the length
+echo ${(U)r} # GIRGIS  #upper case
+echo ${(L)r} # girgis  #lower case 
+
+```
 
 
