@@ -1,3 +1,7 @@
+## [Advance Bash Readme](./bash_script/Readme.md)
+<hr/>
+<hr/>
+
 # Important Linux Commands I Love to Use ❤️
 
 <hr/>
@@ -161,17 +165,7 @@ echo $(date) >> allDates  # append and add to it  the cur date
 ## Filters (grep)
 ### `grep declare Readme.md` print all lines on this file has 'declare' on it
 ### `grep -n` print also the line numbers `-i` ignore case sensetive 
-### `-v` give me all lines without 'declare' `-c` give me count of 'declare' on the file/s
-<hr/>
-<hr/>
 
-## Filters (head & tail)
-### `head` show to you the first 10 lines on file `tail` show last 10 lines
-```bash
-head Readme.md
-tail -20 Readme.md # print last 20 lines
-```
-<hr/>
 <hr/>
 
 ## wc (wordCount)
