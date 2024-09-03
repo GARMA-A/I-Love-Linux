@@ -1,4 +1,4 @@
-## [Advance Bash Readme](./bash_script/Readme.md)
+## [Go to Advance Bash scripting](./bash_script/Readme.md)
 <hr/>
 <hr/>
 
