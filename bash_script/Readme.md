@@ -142,7 +142,120 @@ echo $? #output 2 fail
 
 
 
+<hr/>
+<hr/>
+
+
+# Text processors Commands
+## **`awk`**
+### `awk options 'selection _criteria {action }' input-file > output-file`
+
+```bash 
+ awk '{print}' employee.txt
+# ajay manager account 45000
+# sunil clerk account 25000
+# varun manager sales 50000
+# amit manager account 47000
+# tarun peon sales 15000
+# deepak clerk sales 23000
+# sunil peon sales 13000
+# satvik director purchase 80000 
+
+awk '/manager/ {print}' employee.txt 
+# ajay manager account 45000
+# varun manager sales 50000
+# amit manager account 47000 
+
+awk '{print $1,$4}' employee.txt 
+
+# ajay 45000
+# sunil 25000
+# varun 50000
+# amit 47000
+# tarun 15000
+# deepak 23000
+# sunil 13000
+# satvik 80000 
+
+awk '{print NR,$0}' employee.txt 
+
+# 1 ajay manager account 45000
+# 2 sunil clerk account 25000
+# 3 varun manager sales 50000
+# 4 amit manager account 47000
+# 5 tarun peon sales 15000
+# 6 deepak clerk sales 23000
+# 7 sunil peon sales 13000
+# 8 satvik director purchase 80000
+
+awk 'NR==3, NR==6 {print NR,$0}' employee.txt 
+
+# 3 varun manager sales 50000
+# 4 amit manager account 47000
+# 5 tarun peon sales 15000
+# 6 deepak clerk sales 23000 
+
+awk '{print NR "- " $1 }' geeksforgeeks.txt 
+# line number - first column
+
+# 1 - A
+# 2 - Tarun
+# 3 – Manav    
+# 4 - Praveen
+
+#longest line presented on the file
+awk '{ if (length($0) > max) max = length($0) } END { print max }'
+# 13
+
+#count lines on the file
+$ awk 'END { print NR }' geeksforgeeks.txt 
+
+#print only lines with more than 10 chars
+awk 'length($0) > 10' geeksforgeeks.txt 
+
+#print line contain on the third column "B6"
+awk '{ if($3 == "B6") print $0;}' geeksforgeeks.txt
+
+
+# functional without files
+awk 'BEGIN { for(i=1;i<=6;i++) print "square of", i, "is",i*i; }' 
+# square of 1 is 1
+# square of 2 is 4
+# square of 3 is 9
+# square of 4 is 16
+# square of 5 is 25
+# square of 6 is 36
 
 
 
 
+```
+## **`sort`** and **`uniq`**
+
+```bash 
+sort Readme.md
+#output file content sorted
+sort -r Readme.md
+#sort on reverse order
+sort -k2 Readme.md
+#sort by the column number 2
+uniq Readme.md
+#uniq remove if there is two lines same
+#but must the two lines directly after each other
+# so normally we use sort before uniq
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+       
