@@ -96,7 +96,7 @@ if [ 300 -eq 300 ]; then echo "equal"; else echo not equal; fi
 | `-s`     | `[ -s "$file" ]`                          | True if `file` is not empty                |
 | `-L`     | `[ -L "$file" ]`                          | True if `file` is a symbolic link          |
 | `&&`     | `[ "$a" -eq "$b" ] && [ "$c" -eq "$d" ]`  | True if both conditions are true           |
-| `||`     | `[ "$a" -eq "$b" ] || [ "$c" -eq "$d" ]`  | True if at least one condition is true     |
+| `\|\|`   | `[ "$a" -eq "$b" ] \|\| [ "$c" -eq "$d" ]`| True if at least one condition is true     |
 | `!`      | `[ ! -e "$file" ]`                        | True if `file` does not exist              |
 
 <hr/>
@@ -138,8 +138,91 @@ echo $? #output 2 fail
 | `$_`     | `echo $_`                           | Last argument of the last command                 |
 | `$IFS`   | `echo $IFS`                         | Internal Field Separator                         |
 
+<hr/>
 
 
+## types of for loop
+```bash
+for ((i=0;i<5;i++))
+do
+  echo Iteration $i
+done
+
+#output 
+# Iteration 0
+# Iteration 1
+# Iteration 2
+# Iteration 3
+# Iteration 4
+
+#########
+# another way 
+for i in $(seq 1 2 10) # start step end
+do 
+ echo Iteration $i
+done 
+# output 
+# Iteration 1
+# Iteration 3
+# Iteration 5
+# Iteration 7
+# Iteration 9
+
+for i in {1..10..2}  # start end step
+do
+  echo $i
+done
+#output
+# 1
+# 3
+# 5
+# 7
+# 9
+
+#nested for loop
+
+for ((i=0;i<3;i++))
+do
+  for ((j=0;j<3;j++))
+  do
+    echo i= $i and  j= $j
+  done
+done
+#output 
+# i= 0 and  j= 0
+# i= 0 and  j= 1
+# i= 0 and  j= 2
+# i= 1 and  j= 0
+# i= 1 and  j= 1
+# i= 1 and  j= 2
+# i= 2 and  j= 0
+# i= 2 and  j= 1
+# i= 2 and  j= 2
+
+```
+
+## Permissions `chmod` (change permission mood)
+
+| Number       | Meaning                                                                 
+|:-------------:|:------------------:|
+| **`0`**            | **`NO permission`**     |
+| **`1`**            | **`Execute only`**      |
+| **`2`**            | **`Write only`**        |
+| **`3`**            | **`Execute + Write`**   |
+| **`4`**            | **`Read only`**         |
+| **`5`**            | **`Read + Execute`**    |
+| **`6`**            | **`Read + Write`**      |
+| **`7`**            | **`Read + Write + Execute`**  |
+
+### How this numbers work 
+### you specifie a 3 numbers one for the owner permission
+### one for the groub permission and one for the others permission 
+```bash
+chmod 000 Readme.md
+# no permission for user and group and others
+chmod 764 Readme.md
+# read+write+execute for me and read+write for my groub and read for any one else
+```
 
 
 

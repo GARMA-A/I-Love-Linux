@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/zsh
 
 
 # Information of user 
@@ -40,12 +40,36 @@ password=1234
 # fi
 
 
+# myvar=1
+# while [ $myvar -lt 10 ] 
+# do 
+#   echo the cur var = $myvar
+#   myvar=$((myvar+1))
+# done
 
+
+# while [ -f /mnt/c/Users/krkr/Desktop/repo/Linux/bash_script/file.txt  ]
+# do
+#   echo "file is exist"
+#   sleep 10
+# done
+
+# echo at $(date) the file is deleted
                      
 
+# for ((i=0;i<3;i++))
+# do
+#   for ((j=0;j<3;j++))
+#   do
+#     echo "i= $i and  j= $j"
+#   done
+# done
 
 
-
+for i in {1..10..2} 
+do
+  echo $i
+done
 
 
 
