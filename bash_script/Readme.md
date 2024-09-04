@@ -63,13 +63,15 @@ echo "scale=4; sqrt(2)" | bc -l # -l stand for library
 <hr/>
 
 ##  Bash Conditional Operators
-```bash 
-if [ 300 -ne 300 ]
-then echo "the numbers not equal"
-else echo the numbers are equal
+```bash
+parma1=$1 
+parma1=$2 
+if [[ $1 -lt $2 && $2 -ne $1 ]]
+then echo "the numbers not equal and $2 bigger than $1 of course"
+else echo "the numbers are equal or $1 bigger than $2"
 fi
 # one line if 
-if [ 300 -eq 300 ]; then echo "equal"; else echo not equal; fi
+if [[ 300 -eq 300 ]]; then echo "equal"; else echo not equal; fi
 ```
 | Operator | Example                                   | Meaning                                    |
 |:--------:|:-----------------------------------------:|:-------------------------------------------|
@@ -109,7 +111,7 @@ echo $? # output 0 success
 ls /msc # i do not have that directory
 echo $? #output 2 fail 
 ```
-### check what numbers mean `$?`
+### check what numbers mean on `$?`
 | Exit Status Code  | Meaning                                                         |
 |:------------------|:---------------------------------------------------------------|
 | 0                 | Success. The command executed successfully without any errors. |

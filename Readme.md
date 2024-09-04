@@ -41,7 +41,7 @@ mkdir dirName
 ```bash
 rm -r dirName
 ```
-<hr/>
+<hr/>   
 <hr/>
 
 ## See Content of a File

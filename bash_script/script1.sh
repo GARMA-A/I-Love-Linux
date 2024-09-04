@@ -40,7 +40,20 @@ password=1234
 # fi
 
 
+# if [[ $1 -lt $2 && $2 -ne $1 ]]
+# then echo "the numbers not equal and $2 bigger than $1 of course"
+# else echo "the numbers are equal or $1 bigger than $2"
+# fi
 
+
+# param1=$1
+# param2=$2
+
+# if [[ $param1 -le $param2 && $param2 -ne $param1 ]]; then
+#     echo "The numbers are not equal and $2 is bigger than $1."
+# else
+#     echo "The numbers are equal or $1 is bigger than $2."
+# fi
                      
 
 
