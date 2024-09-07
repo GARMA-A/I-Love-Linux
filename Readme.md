@@ -1,4 +1,5 @@
 ## [Go to Advance Bash scripting](./bash_script/Readme.md)
+## [Network And Admin stuff](./Admin/Readme.md)
 <hr/>
 <hr/>
 
@@ -443,6 +444,7 @@ echo "first line" && echo "second line"
 ```
 
 <hr/>
+
 <hr/>
 
 ## functions

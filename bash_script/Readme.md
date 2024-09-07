@@ -1,4 +1,5 @@
 ## [Back to Main Readme](../Readme.md)
+## [Network And Admin stuff](../Admin/Readme.md)
 
 <hr/>
 <hr/>
@@ -243,8 +244,6 @@ uniq Readme.md
 #uniq remove if there is two lines same
 #but must the two lines directly after each other
 # so normally we use sort before uniq
-
-
 
 
 ```
