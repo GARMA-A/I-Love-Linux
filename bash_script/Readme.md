@@ -1,5 +1,5 @@
 ## [Back to Main Readme](../Readme.md)
-## [Network And Admin stuff](../Admin/Readme.md)
+## [vim and admin staff](../Admin/Readme.md)
 
 <hr/>
 <hr/>

@@ -1,5 +1,5 @@
 ## [Go to Advance Bash scripting](./bash_script/Readme.md)
-## [Network And Admin stuff](./Admin/Readme.md)
+## [Vim and Admin stuff ](./Admin/Readme.md)
 <hr/>
 <hr/>
 
